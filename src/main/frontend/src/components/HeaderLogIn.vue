@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use "@/scss/colors" as c;
 @use "@/scss/mixins" as m;
 

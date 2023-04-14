@@ -144,7 +144,7 @@ const store = useAuthStore();
 
 
 .infoUser{
-        width: 100%;
+        width: 1000px;
         background-color: map-get(c.$colors,"orange");
         display: flex;
         align-items: center;
@@ -159,6 +159,7 @@ const store = useAuthStore();
         border-radius: 100%;
         width: 40%;
         margin: 2%;
+        margin-right: 2em;
         cursor: pointer;
     }
     .contacts{
