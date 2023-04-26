@@ -55,12 +55,12 @@ const profileDescription = () => {
         </div>
       </div>
     </div>
-    <button class="btn-u">
+    <!-- <button class="btn-u">
       <i
         class="fa-regular fa-trash-can fa-2xl trash-u"
         style="color: #ffffff"
       ></i>
-    </button>
+    </button> -->
   </section>
 
   <div class="separator-u" id="separator">
