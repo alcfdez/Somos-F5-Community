@@ -121,7 +121,10 @@ const profileDescription = () => {
           <v-row class="mr-1" justify="end">
             <v-dialog class="popUp" v-model="dialog">
               <template v-slot:activator="{ props }">
-                <v-btn class="verMasButton" variant="text" v-bind="props">
+                <v-btn :class="{
+                    verMasButton: $route.path != '/ElMuro',
+                    verMasButtonElMuroView: $route.path == '/ElMuro',
+                  }" variant="text" v-bind="props">
                   Ver más
                 </v-btn>
               </template>
@@ -174,7 +177,7 @@ const profileDescription = () => {
               </v-card>
             </v-dialog>
           </v-row>
-          <button   class="button-delete">
+          <button v-if="$route.path !='/ElMuro'" class="button-delete">
             <i @click="deletePost" class="fa-solid fa-trash btn btn-delete"></i>
           </button>
         </div>
@@ -374,6 +377,21 @@ const profileDescription = () => {
       border-radius: 5px;
     }
   }
+
+  .verMasButtonElMuroView {
+      margin-top: 2.5vh;
+      width: 10vw;
+
+      &:hover {
+        background-color: map-get(c.$colors, "light-purple");
+        border-radius: 5px;
+      }
+
+      &:active {
+        background-color: purple;
+        border-radius: 5px;
+      }
+    }
 
   .button-edit {
     margin: 0.3em;
