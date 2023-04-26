@@ -30,6 +30,7 @@ const profileService = new ProfileService();
 
 <CardUsers
 		v-for= "user in users" :user="user" :profile="profile" />
+    <!-- falta buscador -->
 </main>
 </template>
 
