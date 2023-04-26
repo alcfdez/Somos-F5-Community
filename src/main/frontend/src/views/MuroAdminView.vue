@@ -30,9 +30,7 @@ const postService = new PostService();
 	posts.value = postService.getPost()
 	console.log(posts.value.idProfile);
 	console.log(posts.profile_id);
-	// profiles.value = profileService.getProfile();
-	// console.log(profiles.value);
-	// console.log(posts.value)
+
 	});
 </script>
 
