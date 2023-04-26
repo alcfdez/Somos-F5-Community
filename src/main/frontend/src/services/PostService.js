@@ -48,7 +48,7 @@ export default class PostService {
     }
 }
 
-// async fetchAllPost(){
+// async fetchPostbyId(id){
 //     try {
 //         await axios({
 //             method: "GET",

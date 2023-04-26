@@ -41,10 +41,13 @@ import { useAuthStore } from '../stores/AuthStore';
      <!-- <button v-if="auth.role === 'ROLE_ADMIN'"> 
          <i class="fa-regular fa-trash-can fa-2xl trash-u" style="color: #000000;"></i>
      </button>  -->
-     <button @click="deleteUser" class="btn-u" >ELIMINAR DE MIS CONTACTOS</button>
+     <!-- <button v-else="auth.role === 'ROLE_USER'" @click="deleteUser" class="btn-u" >ELIMINAR DE MIS CONTACTOS</button> -->
   </section>
  
  
+ 
+
+
   <div class="separator-u" id="separator">
          <img class="stripe-u" :src="image" alt="Línea separadora de color morado.">
   </div> 

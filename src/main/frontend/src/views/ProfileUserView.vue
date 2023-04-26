@@ -1,35 +1,50 @@
 <script setup>
 	import { ref, onBeforeMount } from "vue";
 	import { useProgrammatic } from "@oruga-ui/oruga-next";
-	import InfoUser from "../components/InfoUser.vue";
-	import CardProfile from "../components/CardProfile.vue";
+	import { useAuthStore } from "../stores/AuthStore";
+	import PostService from "../services/PostService"
+	import ProfileService from "../services/ProfileService";
 	import Header from "../components/Header.vue";
 	import AddPublication from "../components/AddPublication.vue";
-	import PostService from "../services/PostService";
-
-	let input = ref("");
-
+	import InfoUser from "../components/InfoUser.vue";
+ 	import CardProfile from "../components/CardProfile.vue";
+	 
+	 
+	const store = useAuthStore()
+	const profileService = new ProfileService();
 	const postService = new PostService();
-
-	let posts = ref([]);
-
+	
+	let profile = ref();
+		
+	onBeforeMount(async()=>{
+		await profileService.fetchOneProfile(store.id)
+		profile.value = profileService.getProfile()
+		console.log(profile.value)
+	});
+	
 	onBeforeMount(async () => {
 		await postService.fetchAllPost();
 		posts.value = postService.getPost();
 		console.log(posts.value);
 	});
+	
 
-	function filteredList() {
-		return posts.value.filter(
-			post =>
-				post.title
-					.toLowerCase()
-					.includes(input.value.toLowerCase()) ||
-				post.description
-					.toLowerCase()
-					.includes(input.value.toLowerCase())
-		);
-	}
+
+	
+	// let input = ref("");
+
+	// function filteredList() {
+	// 	return posts.value.filter(
+	// 		post =>
+	// 			post.title
+	// 				.toLowerCase()
+	// 				.includes(input.value.toLowerCase()) ||
+	// 			post.description
+	// 				.toLowerCase()
+	// 				.includes(input.value.toLowerCase())
+	// 	);
+	// }
+
 
 	const trapFocus = ref(false);
 	const { oruga } = useProgrammatic();
@@ -64,7 +79,7 @@
 				AÑADIR PUBLICACION
 				<i class="fa-solid fa-plus btn-add"></i>
 			</o-button>
-			<div class="input-search">
+			<!-- <div class="input-search">
 				<i
 					class="lupa fa-solid fa-magnifying-glass"
 					style="color: #adadad"
@@ -74,26 +89,40 @@
 					v-model="input"
 					placeholder="Buscar publicaciones..."
 				/>
-			</div>
+			</div> -->
 		</section>
-		<CardProfile
+
+		
+			<CardProfile
+			v-for= "post in profile.posts" :post="post"/>
+		
+		<!-- <CardProfile
 			v-for="post in filteredList()"
 			:post="post"
-		/>
+		/> -->
 
-		<div
+		<!-- <div
 			class="itemError"
 			v-if="input && !filteredList().length"
 		>
 			<p>No results found!</p>
-		</div>
+		</div> -->
+
 	</main>
 </template>
 
 <style lang="scss" scoped>
 	@use "@/scss/colors" as c;
 	@use "@/scss/fonts";
-
+	
+	main {
+		margin: 0 auto;
+		width: 80%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
 	.title {
 		width: 46vw;
 		display: flex;
@@ -116,14 +145,6 @@
 		}
 	}
 
-	main {
-		margin: 0 auto;
-		width: 80%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
 
 	.modal-container {
 		align-self: start;
@@ -131,37 +152,37 @@
 		justify-content: space-between;
 		width: 100%;
 
-		.input-search{
-			display:flex;
-			background-color: map-get(c.$colors, "light-purple");
-			border-radius: 5px;
-			align-items: center;
-			height: 2.8em;
-			width: 20vw;
-
-			i{
-				font-size: 1.1em;
-				margin: .3em;
-			}
-		}
-
-		input {
-			outline: none;
-		}
-
+		
 		.modal {
 			border-radius: 5px;
 			background: map-get(c.$colors, "white");
 			margin-bottom: 10vh;
 			display: flex;
 			border: 2px solid black;
-			width: 20vw;
+			width: 25vw;
 			font-size: 1.2em;
 			color: black;
 			height: 2em;
-
+			
 			.btn-add {
 				margin-left: 1em;
+			}
+			.input-search{
+				display:flex;
+				background-color: map-get(c.$colors, "light-purple");
+				border-radius: 5px;
+				align-items: center;
+				height: 2.8em;
+				width: 20vw;
+	
+				i{
+					font-size: 1.1em;
+					margin: .3em;
+				}
+			}
+	
+			input {
+				outline: none;
 			}
 		}
 	}

@@ -13,9 +13,13 @@
 	const user = ref();
 	onBeforeMount(async () => {
 		const id = route.params.username;
-		await service.fetchOneUser(id);
-		user.value = service.getUser();
-		console.log(user.value);
+
+    await service.fetchOneUser(id)
+    user.value = service.getUser()
+    console.log(user.value)
+
+
+
 		try {
 			const response = await axios.get(
 				`http://localhost:8080/api/profiles/${id}`
@@ -35,7 +39,7 @@
 			:user="user"
 		/>
 		<div class="titleView">
-			<h1 class="titleText">Todas las publicaciones</h1>
+			<!-- <h1 class="titleText">Todas las publicaciones</h1> -->
 			{{ user.value }}
 		</div>
 	</main>

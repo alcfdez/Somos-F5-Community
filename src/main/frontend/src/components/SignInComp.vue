@@ -18,7 +18,7 @@ const email = ref(""),
   password = ref(""),
   passwordRules = reactive([
     (v) => !!v || "Es necesario introducir una contraseña",
-    (v) => v.length >= 8 || "Introduzca un e-mail válido",
+    (v) => v.length >= 8 || "La contraseña debe tener al menos 8 caracteres",
   ]),
   confirmPassword = ref(""),
   confirmPasswordRules = reactive([
@@ -76,7 +76,7 @@ const submitData = async () => {
         >
         </v-text-field>
 
-                <v-text-field v-model="checkCode" :rules="checkCodeRules" label="Codigo de verificacion" required>
+                <v-text-field v-model="checkCode" :rules="checkCodeRules" label="Código de verificación" required>
                 </v-text-field>
 
                 <div class="d-flex flex-column">

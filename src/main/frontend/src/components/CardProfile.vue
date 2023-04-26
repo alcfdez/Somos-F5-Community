@@ -45,7 +45,7 @@ onBeforeMount(() => {
     withCredentials: true,
   })
     .then((response) => {
-      profiles.value = response.data.name;
+      profiles.value = response.data.name + response.data.surname;
       console.log(profiles.value);
     })
     .catch((e) => {});
@@ -108,7 +108,7 @@ const profileDescription = () => {
             <p class="textPubli">
               {{ post.description }}
             </p>
-            <p>Ver mas</p>
+           
           </div>
           <img
             class="filePubli"
@@ -174,7 +174,7 @@ const profileDescription = () => {
               </v-card>
             </v-dialog>
           </v-row>
-          <button class="button-delete">
+          <button   class="button-delete">
             <i @click="deletePost" class="fa-solid fa-trash btn btn-delete"></i>
           </button>
         </div>
@@ -205,7 +205,6 @@ const profileDescription = () => {
   &:hover {
     background-image: url("../assets/images/UserNamePostBackground/background1.png");
     cursor: pointer;
-    border-bottom: 1px solid white;
     opacity: 0.7;
   }
 }
@@ -228,7 +227,6 @@ const profileDescription = () => {
   &:hover {
     background-image: url("../assets/images/UserNamePostBackground/background3.png");
     cursor: pointer;
-    border-bottom: 1px solid white;
     opacity: 0.7;
   }
 }
@@ -251,7 +249,6 @@ const profileDescription = () => {
   &:hover {
     background-image: url("../assets/images/UserNamePostBackground/background2.png");
     cursor: pointer;
-    border-bottom: 1px solid white;
     opacity: 0.7;
   }
 }

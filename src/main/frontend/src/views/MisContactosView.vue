@@ -6,11 +6,36 @@ import CardUsers from "../components/CardUsers.vue";
 import UserService from "../services/UserService";
 import ProfileService from "../services/ProfileService";
 
+
+
+const service = new UserService(); 
+
+
+	const profile = ref();
+  const user = ref()
+	onBeforeMount(async () => {
+	
+    await service.fetchOneUser(2)
+    user.value = service.getUser()
+    console.log(user.value)
+		try {
+      const response = await axios.get(
+				`http://localhost:8080/api/profiles/2`
+			);
+			console.log(response.data)
+      profile.value = response.data
+    } catch (error) {
+      console.log(error)
+    }
+			
+  })
+
+
 const userService = new UserService();
 const profileService = new ProfileService();
 let users = ref([]);
-let user = ref("");
-let profile = ref([]);
+// let user = ref("");
+// let profile = ref([]);
 onBeforeMount(async () => {
   await userService.fetchAllUsers();
   // user = userService.getUser();
@@ -28,11 +53,17 @@ onBeforeMount(async () => {
 
 
 <template>
+
+    
+
   <main>
     <Header />
     <UserContacts />
-    <CardUsers v-for="user in users" :user="user" :profile="profile" />
+    <CardUsers :user = "user" :profile = "profile"/>
+
+    <!-- <CardUsers v-for="user in users" :user="user" :profile="profile" /> -->
   </main>
+
 </template>
 <style lang="scss">
 @use "@/scss/colors" as c;
