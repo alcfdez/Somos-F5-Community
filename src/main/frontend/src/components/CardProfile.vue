@@ -1,9 +1,7 @@
 <script setup>
-
-import axios from 'axios';
-import { defineProps, onBeforeMount, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-
+import axios from "axios";
+import { defineProps, onBeforeMount, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 let random = Math.round(Math.random() * 2 + 1);
 // let image = "src/assets/images/separator" + random + ".png";
@@ -39,19 +37,18 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-	let profiles = ref()
-	onBeforeMount(() => {
-		axios({
-			method: "GET",
-			url: "http://localhost:8080/api/profiles/" + props.post.idProfile,
-			withCredentials: true,
-		})
-			.then((response) => {
-			profiles.value = response.data.name;
-			console.log(profiles.value);
-			})
-			.catch((e) => {
-			});
+let profiles = ref();
+onBeforeMount(() => {
+  axios({
+    method: "GET",
+    url: "http://localhost:8080/api/profiles/" + props.post.idProfile,
+    withCredentials: true,
+  })
+    .then((response) => {
+      profiles.value = response.data.name;
+      console.log(profiles.value);
+    })
+    .catch((e) => {});
 });
 
 const props = defineProps({
@@ -70,69 +67,113 @@ const deletePost = () => {
 
 const dialog = ref(false);
 
-
-const router = useRouter()
+const router = useRouter();
 
 const profileDescription = () => {
-            router.push(`username/${props.post.idProfile}`)
-			console.log("hello")
-    }
-
+  router.push(`username/${props.post.idProfile}`);
+  console.log("hello");
+};
 </script>
 
 <template>
-	<div class="cards">
-		<div class="card">
-			<div class="info">
-				<div class="headerCard">
-					<div class="backgroundUserName"
-						:class="{ 'backcyan': random === 1, 'backpurple': random === 2, 'backorange': random === 3 }">
-						<h3 @click="profileDescription" class="userNamePost">
-							{{ profiles }}
-						</h3>
-					</div>
-					<p class="date">{{ date }}</p>
-				
-				</div>
-				<!-- <h1 :class="{ 'backcyan': random===1,'backpurple': random === 2, 'backorange': random === 3 }">{{ profiles }}</h1> -->
-				<div class="publication" :class="{ 'cyan': random===1,'purple': random === 2, 'orange': random === 3 }">
-					<div class="text" >
-						<h2 class="titlePubli" >{{ post.title }}</h2>
-						<p class="textPubli">
-							{{ post.description }}
-						</p>
-						<p>Ver mas</p>
-					</div>
-					<img class="filePubli" v-if="post.image" :src="'http://localhost:8080/media/' + post.image" alt="imagen post" />
-				</div>
-				<div class="buttons">
-					<v-row class="mr-1" justify="end">
-						<v-dialog class="popUp"  v-model="dialog">
-							<template v-slot:activator="{ props }">
-								<v-btn class="verMasButton" variant="text" v-bind="props">
-									Ver más
-								</v-btn>
-							</template>
-							<v-card>
-								<v-card-title :class="{ 'cyanTitle': random === 1, 'purpleTitle': random === 2, 'orangeTitle': random === 3 }">
-									<h2 class="titlePubliBigger">{{ post.title }}</h2>
-								</v-card-title>
-								<v-card-text :class="{ 'cyan': random === 1, 'purple': random === 2, 'orange': random === 3 }">
-									<p class="textPubliBigger">{{ post.description }}</p>
-									<img v-if="post.image" :src="'http://localhost:8080/media/' + post.image"
-										alt="imagen post" />
-									<p class="datePopUp">{{ date }}</p>
-
-								</v-card-text>
-								<v-card-actions :class="{ 'cyan': random === 1, 'purple': random === 2, 'orange': random === 3 }">
-									<v-spacer></v-spacer>
-									<v-btn class="cerrarButton" :class="{ 'cyanTitle': random === 1, 'purpleTitle': random === 2, 'orangeTitle': random === 3 }" variant="text" @click="dialog = false">
-										Cerrar
-									</v-btn>
-								</v-card-actions>
-							</v-card>
-						</v-dialog>
-					</v-row>
+  <div class="cards">
+    <div class="card">
+      <div class="info">
+        <div class="headerCard">
+          <div
+            class="backgroundUserName"
+            :class="{
+              backcyan: random === 1,
+              backpurple: random === 2,
+              backorange: random === 3,
+            }"
+          >
+            <h3 @click="profileDescription" class="userNamePost">
+              {{ profiles }}
+            </h3>
+          </div>
+          <p class="date">{{ date }}</p>
+        </div>
+        <!-- <h1 :class="{ 'backcyan': random===1,'backpurple': random === 2, 'backorange': random === 3 }">{{ profiles }}</h1> -->
+        <div
+          class="publication"
+          :class="{
+            cyan: random === 1,
+            purple: random === 2,
+            orange: random === 3,
+          }"
+        >
+          <div class="text">
+            <h2 class="titlePubli">{{ post.title }}</h2>
+            <p class="textPubli">
+              {{ post.description }}
+            </p>
+            <p>Ver mas</p>
+          </div>
+          <img
+            class="filePubli"
+            v-if="post.image"
+            :src="'http://localhost:8080/media/' + post.image"
+            alt="imagen post"
+          />
+        </div>
+        <div class="buttons">
+          <v-row class="mr-1" justify="end">
+            <v-dialog class="popUp" v-model="dialog">
+              <template v-slot:activator="{ props }">
+                <v-btn class="verMasButton" variant="text" v-bind="props">
+                  Ver más
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title
+                  :class="{
+                    cyanTitle: random === 1,
+                    purpleTitle: random === 2,
+                    orangeTitle: random === 3,
+                  }"
+                >
+                  <h2 class="titlePubliBigger">{{ post.title }}</h2>
+                </v-card-title>
+                <v-card-text
+                  :class="{
+                    cyan: random === 1,
+                    purple: random === 2,
+                    orange: random === 3,
+                  }"
+                >
+                  <p class="textPubliBigger">{{ post.description }}</p>
+                  <img
+                    v-if="post.image"
+                    :src="'http://localhost:8080/media/' + post.image"
+                    alt="imagen post"
+                  />
+                  <p class="datePopUp">{{ date }}</p>
+                </v-card-text>
+                <v-card-actions
+                  :class="{
+                    cyan: random === 1,
+                    purple: random === 2,
+                    orange: random === 3,
+                  }"
+                >
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    class="cerrarButton"
+                    :class="{
+                      cyanTitle: random === 1,
+                      purpleTitle: random === 2,
+                      orangeTitle: random === 3,
+                    }"
+                    variant="text"
+                    @click="dialog = false"
+                  >
+                    Cerrar
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
           <button class="button-delete">
             <i @click="deletePost" class="fa-solid fa-trash btn btn-delete"></i>
           </button>
@@ -160,6 +201,13 @@ const profileDescription = () => {
   background-size: contain;
   width: 40vw;
   height: 5vh;
+
+  &:hover {
+    background-image: url("../assets/images/UserNamePostBackground/background1.png");
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    opacity: 0.7;
+  }
 }
 
 .orange {
@@ -176,6 +224,13 @@ const profileDescription = () => {
   background-size: contain;
   width: 40vw;
   height: 5vh;
+
+  &:hover {
+    background-image: url("../assets/images/UserNamePostBackground/background3.png");
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    opacity: 0.7;
+  }
 }
 
 .purple {
@@ -192,6 +247,13 @@ const profileDescription = () => {
   background-size: contain;
   width: 40vw;
   height: 5vh;
+
+  &:hover {
+    background-image: url("../assets/images/UserNamePostBackground/background2.png");
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    opacity: 0.7;
+  }
 }
 
 .cards {

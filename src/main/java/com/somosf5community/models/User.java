@@ -28,7 +28,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private String image = "perfilVacio.png";
+    private String image;
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

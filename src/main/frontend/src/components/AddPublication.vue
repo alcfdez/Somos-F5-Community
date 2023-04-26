@@ -60,6 +60,8 @@ const reload = () =>{
       <textarea v-model="descriptionModel" class="description" placeholder="Cuéntanos algo interesante..." rows="5"
         cols="46">
       </textarea>
+      <input v-model="titleModel" class="title" type="text" placeholder="Título de tu publicación" />
+
       <input class="resources" type="file" @change="onFileChange" ref="fileInput">
       <div class="buttonsContainer">
         <button @click="reload" class="cancelButton">Cancelar</button>

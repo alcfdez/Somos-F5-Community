@@ -18,50 +18,37 @@ import { useAuthStore } from '../stores/AuthStore';
 </script>
 
 <template>
-  <section
-    class="card-u"
-    :class="{ cyan: random === 1, purple: random === 2, orange: random === 3 }"
-  >
-    <!-- <section v-if="random==3" class="card-u" style="background-color: orange;"> -->
-    <div class="info-u">
-        <img class="img-u" 
-        v-if="user.image != null" :src="'http://localhost:8080/media/' + user.image">
-        <img
-        v-else class="img-u" src="../assets/images/perfilVacio.png" alt="img"/>
-        <div class="date-u">
-           <h1 class="name-u">{{ profile[user.id -1].name + profile[user.id -1].surname }}</h1>
-           <div class="contact-u">
-                <i class="fa-regular fa-envelope logo-u" style="color: #000000;"></i>
-                <p @click="profileDescription" class="text-u">{{ user.username }}</p>
-           </div>
-           <div class="contact-u">
-                <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
-                <p class="text-u">{{ profile[user.id -1].location }}</p>
-           </div>
-        </div>
-        <div class="contact-u">
-          <i class="fa-solid fa-location-dot" style="color: #000000"></i>
-          <p class="text-u">{{ profile[user.id - 1].location }}</p>
-        </div>
-      </div>
-    </div>
-    <button v-if="auth.role === 'ROLE_ADMIN'"> 
-        <i class="fa-regular fa-trash-can fa-2xl trash-u" style="color: #000000;"></i>
-    </button> 
-    <button @click="deleteUser" class="btn-u" >ELIMINAR DE MIS CONTACTOS</button>
- </section>
-
-
-
+  <section class="card-u" :class="{ 'cyan': random===1,'purple': random === 2, 'orange': random === 3 }">
+         <!-- <section v-if="random==3" class="card-u" style="background-color: orange;"> -->
+     <div class="info-u">
+ 
+         <img class="img-u" 
+         v-if="user.image != null" :src="'http://localhost:8080/media/' + user.image">
+         <img
+         v-else class="img-u" src="../assets/images/perfilVacio.png" alt="img"/>
+         <div class="date-u">
+            <h1 class="name-u">{{ profile[user.id -1].name + profile[user.id -1].surname }}</h1>
+            <div class="contact-u">
+                 <i class="fa-regular fa-envelope logo-u" style="color: #000000;"></i>
+                 <p @click="profileDescription" class="text-u">{{ user.username }}</p>
+            </div>
+            <div class="contact-u">
+                 <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
+                 <p class="text-u">{{ profile[user.id -1].location }}</p>
+            </div>
+         </div>
+     </div>
+     <!-- <button v-if="auth.role === 'ROLE_ADMIN'"> 
+         <i class="fa-regular fa-trash-can fa-2xl trash-u" style="color: #000000;"></i>
+     </button>  -->
+     <button @click="deleteUser" class="btn-u" >ELIMINAR DE MIS CONTACTOS</button>
+  </section>
+ 
+ 
   <div class="separator-u" id="separator">
-    <img
-      class="stripe-u"
-      :src="image"
-      alt="Línea separadora de color morado."
-    />
-  </div>
-</template>
-
+         <img class="stripe-u" :src="image" alt="Línea separadora de color morado.">
+  </div> 
+ </template>
 <style lang="scss">
 @use "@/scss/colors" as c;
 @use "@/scss/fonts";
