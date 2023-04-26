@@ -21,9 +21,9 @@ INSERT INTO user_roles (user_id, role_id) VALUES (1,2)
 INSERT INTO user_roles (admin_id, role_id) VALUES (2,3)
 INSERT INTO profiles_contacts (profile_id, contact_id) VALUES (1,1)
 
--- INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'publicacion', null, 'aplicacion java', 1)
--- INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'Titulo', null, 'Descripcion', 2)
--- INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'Titulo', null, 'Descripcion', 1)
+INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'publicacion', null, 'aplicacion java', 1)
+INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'Titulo', null, 'Descripcion', 2)
+INSERT INTO posts (id_post, title, date, description, profile_id) VALUES (default, 'Titulo', null, 'Descripcion', 1)
 
 
 

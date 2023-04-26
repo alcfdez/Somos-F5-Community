@@ -8,29 +8,17 @@ import ProfileService from "../services/ProfileService";
 
 const userService = new UserService();
 const profileService = new ProfileService();
-let users = ref([]);
-let user = ref("");
-let profile = ref([]);
-onBeforeMount(async () => {
-  await userService.fetchAllUsers();
-  // user = userService.getUser();
-  await profileService.fetchAllProfiles();
-  profile.value = profileService.getProfile();
-  users.value = userService.getUser();
-  console.log(users);
-  console.log(profile.value);
-});
 
-let input = ref("");
+	let users = ref([]);
+	let user = ref("");
+	let profile = ref([]);
 
-function filteredList() {
-  return profile.value.filter(
-    (profile) =>
-      profile.name.toLowerCase().includes(input.value.toLowerCase()) ||
-      profile.surname.toLowerCase().includes(input.value.toLowerCase()) ||
-      profile.location.toLowerCase().includes(input.value.toLowerCase())
-  );
-}
+	// user = userService.getUser();
+
+	profile.value = profileService.getProfile();
+
+	});
+
 </script>
 
 <template>

@@ -14,10 +14,10 @@ const postService = new PostService();
 
 let posts = ref([]);
 
-onBeforeMount(async()=>{
-	await postService.fetchAllPost()
-	posts.value = postService.getPost()
-	console.log(posts.value)
+onBeforeMount(async () => {
+		await postService.fetchAllPost();
+		posts.value = postService.getPost();
+		console.log(posts.value);
 	});
 
     function filteredList() {
@@ -49,6 +49,14 @@ function cardModal() {
 <main>
 <Header/>
 <UserFeed/>
+<div class="tools">
+ 
+    <!-- <Search/> -->
+</div>
+   <CardProfile
+			v-for="post in posts"
+			:post="post"
+		/>
 <div class="modal-container">
       <o-button @click="cardModal()" class="modal">
         AÑADIR PUBLICACION

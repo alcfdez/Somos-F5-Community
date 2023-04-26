@@ -44,10 +44,12 @@ const router = createRouter({
       component: () => import('../views/UsersAdminView.vue')   
     },
     {
-      path:'/ProfileCoder',
+      path:'/username/:username',
       name: 'ProfileCoder',
       component: () => import('../views/ProfileCoderView.vue')   
-    },
+    }
+    
+
     
    ]
 })

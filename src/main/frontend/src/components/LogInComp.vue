@@ -2,10 +2,14 @@
 import { ref, reactive } from "vue";
 
 import { RouterLink, useRouter } from "vue-router";
+import { useProgrammatic } from '@oruga-ui/oruga-next'
 import AuthService from "../services/AuthService";
 import { useAuthStore } from "../stores/AuthStore";
+
 const auth = useAuthStore();
 const router = useRouter();
+
+const { oruga } = useProgrammatic()
 
 const email = ref(""),
 
@@ -33,6 +37,13 @@ const submitData = async () => {
     auth.setGithub(user.github);
     auth.setLinkedin(user.linkedin);
     auth.setIsAuthenticated();
+
+        oruga.notification.open({
+      message: 'Bienvenido!',
+      rootClass: 'success-notification',
+      duration: 3000,
+      position: 'top'
+    });
     
     if(user.role == "ROLE_ADMIN"){
       router.push("/MuroAdmin/")
@@ -43,7 +54,13 @@ const submitData = async () => {
     console.log(user);
   } catch (error) {
     console.error(error);
-    alert("No te conozco")
+
+        oruga.notification.open({
+      message: 'No te conozco',
+      rootClass: 'success-notification',
+      duration: 5000,
+      position: 'top'
+    });
   }
   onReset();
 };
