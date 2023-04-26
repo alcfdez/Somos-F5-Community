@@ -2,16 +2,38 @@
 	import { ref, onBeforeMount } from "vue";
 	import { useProgrammatic } from "@oruga-ui/oruga-next";
 	import InfoUser from "../components/InfoUser.vue";
-	import CardProfile from "../components/CardProfile.vue";
 	import Header from "../components/Header.vue";
 	import AddPublication from "../components/AddPublication.vue";
-	import PostService from "../services/PostService";
+	import ProfileService from "../services/ProfileService";
+	import { useAuthStore } from "../stores/AuthStore";
+ 	import CardProfile from "../components/CardProfile.vue";
+	const store = useAuthStore()
 
 	let input = ref("");
 
+	
+	const profileService = new ProfileService();
+
+
 	const postService = new PostService();
 
-	let posts = ref([]);
+
+	let profile = ref();
+
+
+ 	onBeforeMount(async()=>{
+	await profileService.fetchOneProfile(store.id)
+	profile.value = profileService.getProfile()
+	console.log(profile.value)
+});
+
+// function filteredList() {
+// 	return posts.value.filter((post) =>
+// 		post.title.toLowerCase().includes(input.value.toLowerCase())||
+// 		post.description.toLowerCase().includes(input.value.toLowerCase())
+// 		// ||profile.name.toLowerCase().includes(input.value.toLowerCase())
+// 	);
+// }
 
 	onBeforeMount(async () => {
 		await postService.fetchAllPost();
@@ -30,6 +52,7 @@
 					.includes(input.value.toLowerCase())
 		);
 	}
+
 
 	const trapFocus = ref(false);
 	const { oruga } = useProgrammatic();
@@ -76,6 +99,14 @@
 				/>
 			</div>
 		</section>
+
+		
+
+			<CardProfile
+			v-for= "post in profile.posts" :post="post"/>
+		
+
+
 		<CardProfile
 			v-for="post in filteredList()"
 			:post="post"
@@ -87,6 +118,7 @@
 		>
 			<p>No results found!</p>
 		</div>
+
 	</main>
 </template>
 

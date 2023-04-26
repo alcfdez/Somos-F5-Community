@@ -45,9 +45,9 @@ import { useAuthStore } from '../stores/AuthStore';
         </div>
       </div>
     </div>
-    <button v-if="auth.role === 'ROLE_ADMIN'"> 
+    <!-- <button v-if="auth.role === 'ROLE_ADMIN'"> 
         <i class="fa-regular fa-trash-can fa-2xl trash-u" style="color: #000000;"></i>
-    </button> 
+    </button>  -->
     <button @click="deleteUser" class="btn-u" >ELIMINAR DE MIS CONTACTOS</button>
  </section>
 
