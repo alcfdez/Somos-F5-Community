@@ -1,7 +1,4 @@
 <script setup>
-import { useAuthStore } from "../stores/AuthStore";
-import axios from "axios";
-
 let random = Math.round(Math.random() * 2 + 1);
 let image = "src/assets/images/separator" + random + ".png";
 
@@ -13,14 +10,6 @@ const props = defineProps({
 const profileDescription = () => {
   router.push(`username/${props.user.username}`);
 };
-
-// const deleteUser = () => {
-
-
-// }
-
-
-
 </script>
 
 <template>
@@ -28,7 +17,6 @@ const profileDescription = () => {
     class="card-u"
     :class="{ cyan: random === 1, purple: random === 2, orange: random === 3 }"
   >
-    <!-- <section v-if="random==3" class="card-u" style="background-color: orange;"> -->
     <div class="info-u">
       <img
         class="img-u"
@@ -55,12 +43,6 @@ const profileDescription = () => {
         </div>
       </div>
     </div>
-    <!-- <button class="btn-u">
-      <i
-        class="fa-regular fa-trash-can fa-2xl trash-u"
-        style="color: #ffffff"
-      ></i>
-    </button> -->
   </section>
 
   <div class="separator-u" id="separator">
@@ -136,12 +118,10 @@ const profileDescription = () => {
       background-color: map-get(c.$colors, "green");
       color: map-get(c.$colors, "orange");
     }
-   
-    .trash-u{
+
+    .trash-u {
       margin-bottom: 1vh;
-
     }
-
   }
 }
 

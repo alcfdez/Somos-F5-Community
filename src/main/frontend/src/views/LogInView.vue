@@ -1,5 +1,5 @@
 <script setup>
-import HeaderLogIn from '../components/HeaderLogIn.vue'
+import HeaderLogIn from '../components/HeaderLogin.vue'
 import LogInComp from '../components/LogInComp.vue'
 
 </script>

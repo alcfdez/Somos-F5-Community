@@ -19,15 +19,10 @@ function cardModal() {
 }
 
 const postService = new PostService();
-// const profileService = new ProfileService();
 let posts = ref([]);
-// let profiles = ref([]);
 onBeforeMount(async () => {
   await postService.fetchAllPost();
-  // await profileService.fetchAllProfiles();
   posts.value = postService.getPost();
-  console.log(posts.value.idProfile);
-  console.log(posts.profile_id);
 });
 
 let input = ref("");
@@ -83,22 +78,21 @@ main {
 
 .modal-container {
   align-self: start;
-  align-self: start;
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-    margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2em;
 
   .modal {
     border-radius: 5px;
-			background: map-get(c.$colors, "white");
-			margin-bottom: 10vh;
-			display: flex;
-			border: 2px solid black;
-			width: 25vw;
-			font-size: 1.2em;
-			color: black;
-			height: 2em;
+    background: map-get(c.$colors, "white");
+    margin-bottom: 10vh;
+    display: flex;
+    border: 2px solid black;
+    width: 25vw;
+    font-size: 1.2em;
+    color: black;
+    height: 2em;
 
     .btn-add {
       margin-left: 1em;

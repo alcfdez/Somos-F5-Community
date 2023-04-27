@@ -1,11 +1,10 @@
 <script setup>
-import AuthService from '../services/AuthService.js';
+import AuthService from "../services/AuthService.js";
 const service = new AuthService();
 
-const logout = async()=>{
-  await service.logout()
-}
-
+const logout = async () => {
+  await service.logout();
+};
 </script>
 <template>
   <div class="header">
@@ -19,7 +18,9 @@ const logout = async()=>{
         <router-link to="/MisContactos" class="nav-bar__link" href=""
           >Mis Contactos</router-link
         >
-        <router-link to="/ElMuro" class="nav-bar__link" href="">El Muro</router-link>
+        <router-link to="/ElMuro" class="nav-bar__link" href=""
+          >El Muro</router-link
+        >
         <router-link @click="logout" to="/" href="">Log Out</router-link>
       </nav>
 
@@ -31,8 +32,8 @@ const logout = async()=>{
             >Mis Publicaciones</router-link
           >
           <router-link to="/MisContactos" class="nav-bar__link" href=""
-          >Mis Contactos</router-link
-        >
+            >Mis Contactos</router-link
+          >
           <router-link to="/ElMuro" class="navLink" href=""
             >El Muro</router-link
           >
@@ -45,12 +46,12 @@ const logout = async()=>{
 <style lang="scss" scoped>
 @use "@/scss/colors" as c;
 @use "@/scss/mixins" as m;
-@use "@/scss/fonts" ;
+@use "@/scss/fonts";
 
 .header {
   width: 100%;
   position: sticky;
-  z-index:10;
+  z-index: 10;
   left: 0%;
   top: 0%;
   right: 0%;
@@ -86,7 +87,6 @@ const logout = async()=>{
       font-family: "openSans";
       margin-right: 1em;
 
-      
       @include m.mv(500px) {
         display: none;
       }
@@ -96,26 +96,25 @@ const logout = async()=>{
       display: none;
       @include m.mv(500px) {
         margin-top: 5%;
-       width: 100%;
+        width: 100%;
         display: block;
-       
+
         ul {
           background-color: map-get(c.$colors, "light-orange");
           display: none;
-        height: 100vh;
-        width: 100%;
-        padding-left: 3px;
-
+          height: 100vh;
+          width: 100%;
+          padding-left: 3px;
         }
-        
+
         input:checked ~ ul {
           display: block;
         }
-        
+
         input {
           display: none;
         }
-        
+
         label {
           box-sizing: border-box;
           display: inline-block;
@@ -129,33 +128,21 @@ const logout = async()=>{
           user-select: none;
         }
 
-        /* Estilo del boton cuando se pasa el mouse por encima*/
-        // label:hover {
-        //   background: map-get(c.$colors, "light-orange");
-        // }
-
-        /* Estilo del boton cuando el menú está expandido*/
-        // input:checked ~ label {
-        //   background: map-get(c.$colors, "light-orange");
-        // }
-
         ul {
           margin-top: 0;
           padding: 0;
           width: 200px;
-          font-family: 'open Sans', 'Sans serif';
+          font-family: "open Sans", "Sans serif";
         }
 
         li {
           display: block;
-          // background: map-get(c.$colors, "light-orange");
           margin: 0;
           padding: 10px;
           list-style: none;
           border-bottom: 1px solid grey;
         }
 
-        /*Estilo cuando el mouse pasa encima de cada link del menu*/
         li:hover {
           filter: brightness(110%);
         }

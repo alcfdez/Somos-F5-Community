@@ -60,7 +60,6 @@
 				src="../assets/images/imagesSomosF5/banner.png"
 				alt=""
 			/>
-			<!-- <button class="addContacts">AÑADIR A MIS CONTACTOS</button> -->
 		</div>
 	</section>
 </template>

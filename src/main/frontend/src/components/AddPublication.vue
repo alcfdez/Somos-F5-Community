@@ -1,21 +1,19 @@
 <script setup>
 import { ref, reactive, onBeforeMount } from "vue";
 import axios from "axios";
-import PostService from "@/services/PostService.js"
+import PostService from "@/services/PostService.js";
 
-
-const onFileChange = event => {
+const onFileChange = (event) => {
   file.value = event.target.files[0];
 };
 const file = ref(null);
-const postService = new PostService()
-const titleModel = ref()
-const descriptionModel = ref()
+const postService = new PostService();
+const titleModel = ref();
+const descriptionModel = ref();
 const post = reactive({
   title: titleModel,
   description: descriptionModel,
-  // url:urlModel,
-})
+});
 const submitData = async () => {
   try {
     const formData = new FormData();
@@ -41,36 +39,57 @@ const submitData = async () => {
         withCredentials: true,
       });
     }
-    console.log("Enviado")
+    console.log("Enviado");
     location.reload();
   } catch (error) {
     console.log(error);
   }
-  location.reload()
-}
-const reload = () =>{
-  location.reload()
-} 
+  location.reload();
+};
+const reload = () => {
+  location.reload();
+};
 </script>
 
 <template>
   <div class="formBody">
     <form @submit.prevent>
       <h1 class="addYourPubli">¡Añade una nueva publicación!</h1>
-      <input v-model="titleModel" class="title" type="text" placeholder="Título de tu publicación" />
-      <textarea v-model="descriptionModel" class="description" placeholder="Cuéntanos algo interesante..." rows="5"
-        cols="46">
+      <input
+        v-model="titleModel"
+        class="title"
+        type="text"
+        placeholder="Título de tu publicación"
+      />
+      <textarea
+        v-model="descriptionModel"
+        class="description"
+        placeholder="Cuéntanos algo interesante..."
+        rows="5"
+        cols="46"
+      >
       </textarea>
-      <!-- <input v-model="urlModel" class="title" type="url" pattern="https://.*" placeholder="Añade el link.." /> -->
 
-      <input class="resources" type="file" @change="onFileChange" ref="fileInput">
+      <input
+        class="resources"
+        type="file"
+        @change="onFileChange"
+        ref="fileInput"
+      />
       <div class="buttonsContainer">
         <button @click="reload" class="cancelButton">Cancelar</button>
         <button @click="submitData" class="sendButton">Publicar</button>
       </div>
-      <img class="purpleTriangle" src="../assets/images/svgPics/blueTriangle.svg" alt="triangulo morado">
-      <img class="greenSplash" src="../assets/images/imagesSomosF5/manchaAzul 1.png" alt="splash verde">
-
+      <img
+        class="purpleTriangle"
+        src="../assets/images/svgPics/blueTriangle.svg"
+        alt="triangulo morado"
+      />
+      <img
+        class="greenSplash"
+        src="../assets/images/imagesSomosF5/manchaAzul 1.png"
+        alt="splash verde"
+      />
     </form>
   </div>
 </template>
@@ -81,26 +100,23 @@ const reload = () =>{
 .formBody {
   background: map-get(c.$colors, "orange");
   overflow: hidden;
-  
-  
 
-
-  @media(min-width: 1023px) and (max-width: 1438px) {
+  @media (min-width: 1023px) and (max-width: 1438px) {
     width: 800px;
   }
 
-  @media(min-width: 1439px) {
+  @media (min-width: 1439px) {
     width: 900px;
   }
-  
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+
     padding: 1em;
     height: 35em;
-    
+
     .addYourPubli {
       margin: 0.5em;
       color: white;
@@ -116,7 +132,7 @@ const reload = () =>{
       border-radius: 5px;
       z-index: 5;
 
-      @media(min-width: 426px) {
+      @media (min-width: 426px) {
         width: 55%;
       }
     }
@@ -131,7 +147,7 @@ const reload = () =>{
       border-radius: 5px;
       z-index: 5;
 
-      @media(min-width: 426px) {
+      @media (min-width: 426px) {
         width: 55%;
       }
     }
@@ -144,12 +160,10 @@ const reload = () =>{
       z-index: 5;
       align-items: center;
 
-      
-      @media(min-width: 426px) {
+      @media (min-width: 426px) {
         width: 55%;
       }
     }
-
 
     .buttonsContainer {
       margin: 0.5em;
@@ -188,7 +202,7 @@ const reload = () =>{
       width: 9em;
     }
 
-    @media(max-width: 650px) {
+    @media (max-width: 650px) {
       .purpleTriangle {
         position: absolute;
         bottom: 0;
@@ -206,7 +220,7 @@ const reload = () =>{
   }
 }
 
-@media(max-width: 426px) {
+@media (max-width: 426px) {
   form {
     display: flex;
     flex-direction: column;

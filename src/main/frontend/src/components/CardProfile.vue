@@ -4,7 +4,6 @@ import { defineProps, onBeforeMount, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 let random = Math.round(Math.random() * 2 + 1);
-// let image = "src/assets/images/separator" + random + ".png";
 
 let date = new Date().toLocaleDateString();
 
@@ -94,7 +93,6 @@ const profileDescription = () => {
           </div>
           <p class="date">{{ date }}</p>
         </div>
-        <!-- <h1 :class="{ 'backcyan': random===1,'backpurple': random === 2, 'backorange': random === 3 }">{{ profiles }}</h1> -->
         <div
           class="publication"
           :class="{

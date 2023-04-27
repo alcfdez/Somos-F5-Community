@@ -31,19 +31,6 @@
 
 
 	
-	// let input = ref("");
-
-	// function filteredList() {
-	// 	return posts.value.filter(
-	// 		post =>
-	// 			post.title
-	// 				.toLowerCase()
-	// 				.includes(input.value.toLowerCase()) ||
-	// 			post.description
-	// 				.toLowerCase()
-	// 				.includes(input.value.toLowerCase())
-	// 	);
-	// }
 
 
 	const trapFocus = ref(false);
@@ -79,35 +66,14 @@
 				AÑADIR PUBLICACION
 				<i class="fa-solid fa-plus btn-add"></i>
 			</o-button>
-			<!-- <div class="input-search">
-				<i
-					class="lupa fa-solid fa-magnifying-glass"
-					style="color: #adadad"
-				></i>
-				<input
-					type="text"
-					v-model="input"
-					placeholder="Buscar publicaciones..."
-				/>
-			</div> -->
+	
 		</section>
 
 		
 			<CardProfile
 			v-for= "post in profile.posts" :post="post"/>
 		
-		<!-- <CardProfile
-			v-for="post in filteredList()"
-			:post="post"
-		/> -->
-
-		<!-- <div
-			class="itemError"
-			v-if="input && !filteredList().length"
-		>
-			<p>No results found!</p>
-		</div> -->
-
+	
 	</main>
 </template>
 

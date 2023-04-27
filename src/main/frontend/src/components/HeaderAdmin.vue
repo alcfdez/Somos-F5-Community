@@ -5,7 +5,9 @@
 
     <div class="menuContainer">
       <nav role="navigation" class="menuNav">
-        <router-link to="/MuroAdmin" class="nav-bar__link" href="">El Muro</router-link>
+        <router-link to="/MuroAdmin" class="nav-bar__link" href=""
+          >El Muro</router-link
+        >
         <router-link to="/UsersAdmin" class="nav-bar__link" href=""
           >Usuarios</router-link
         >
@@ -17,7 +19,7 @@
         <label for="menu"> ☰ </label>
         <ul>
           <router-link to="/ElMuro" class="navLink" href=""
-          >El Muro</router-link
+            >El Muro</router-link
           >
           <router-link to="/Users" class="nav-bar__link" href=""
             >Usuarios</router-link
@@ -31,12 +33,12 @@
 <style lang="scss" scoped>
 @use "@/scss/colors" as c;
 @use "@/scss/mixins" as m;
-@use "@/scss/fonts" ;
+@use "@/scss/fonts";
 
 .header {
   width: 100%;
   position: sticky;
-  z-index:10;
+  z-index: 10;
   left: 0%;
   top: 0%;
   right: 0%;
@@ -72,7 +74,6 @@
       font-family: "openSans";
       margin-right: 1em;
 
-      
       @include m.mv(500px) {
         display: none;
       }
@@ -81,22 +82,21 @@
     .menuMobile {
       display: none;
       @include m.mv(500px) {
-        margin:auto;
+        margin: auto;
         margin-right: 1vw;
         display: block;
-        c
-        ul {
+        c ul {
           display: none;
         }
-        
+
         input:checked ~ ul {
           display: block;
         }
-        
+
         input {
           display: none;
         }
-        
+
         label {
           box-sizing: border-box;
           display: inline-block;
@@ -110,33 +110,21 @@
           user-select: none;
         }
 
-        /* Estilo del boton cuando se pasa el mouse por encima*/
-        // label:hover {
-        //   background: map-get(c.$colors, "light-orange");
-        // }
-
-        /* Estilo del boton cuando el menú está expandido*/
-        // input:checked ~ label {
-        //   background: map-get(c.$colors, "light-orange");
-        // }
-
         ul {
           margin-top: 0;
           padding: 0;
           width: 200px;
-          font-family: 'open Sans', 'Sans serif';
+          font-family: "open Sans", "Sans serif";
         }
 
         li {
           display: block;
-          // background: map-get(c.$colors, "light-orange");
           margin: 0;
           padding: 10px;
           list-style: none;
           border-bottom: 1px solid grey;
         }
 
-        /*Estilo cuando el mouse pasa encima de cada link del menu*/
         li:hover {
           filter: brightness(110%);
         }
