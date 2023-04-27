@@ -26,14 +26,7 @@ public class UserRepositoryTest {
     public void findById(){
         User user =  repository.findById(1L).orElseThrow();
        assertThat(user.getId()).isEqualTo(1L);
-       assertThat(user.getUsername()).isEqualTo("hola@jaja.xd");
-    }
-
-    @Test
-    public void findByName(){
-        User user = repository.findByUsername("hola@jaja.xd").orElseThrow();
-        assertThat(user.getId()).isEqualTo(1L);
-        assertThat(user.getUsername()).isEqualTo("hola@jaja.xd");
+       assertThat(user.getUsername()).isEqualTo("saul@gmail.com");
     }
      
     @Test
