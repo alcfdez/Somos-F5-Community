@@ -72,8 +72,6 @@ public class MediaController {
     }
     @PostMapping("upload/post")
     public Map<String, String> uploadFile(@RequestParam("file") MultipartFile multipartFile, Post post) {
-        // String url = "";
-        // if (multipartFile != null) {
             post.setImage(multipartFile.getOriginalFilename());
             postService.save(post);
     
@@ -84,11 +82,6 @@ public class MediaController {
                     .path("/media/")
                     .path(path)
                     .toUriString();
-
-
-// else {
-//             postService.save(post);
-//         }
     
         return Map.of("url", url);
     }

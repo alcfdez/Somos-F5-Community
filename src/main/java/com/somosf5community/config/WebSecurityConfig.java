@@ -41,7 +41,6 @@ public class WebSecurityConfig {
                         .logoutUrl("/api/logout")
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests((auth) -> auth
-                        // .requestMatchers("/api/register", "/api/login", "/api/users/*").permitAll()
                         .requestMatchers("/api/logout", "/media/upload").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/films/add").hasRole("ADMIN")
                         .anyRequest().permitAll())
